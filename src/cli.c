@@ -3,43 +3,37 @@
 static char *color = "\x1B[0m";
 
 /* Prints a line to the console. This includes a new line character. */
-void printLine (char *line)
-{
-	printf ("%s", line);
-	printf ("\n");
+void printLine (char *line) {
+	printf("%s", line);
+	printf("\n");
 }
 
 /* Prints text to the console. No new line character. */
-void printText (char *line)
-{
-	printf ("%s", line);
+void printText (char *line) {
+	printf("%s", line);
 }
 
 /* Refreshes the color for the terminal. */
-void refreshTextColor()
-{
-	printText (color);
+void refreshTextColor () {
+	printText(color);
 }
 
 /* Prints an error to the console. */
-void printError (char *line)
-{
-	printText ("\x1B[31m");
-	printText (line);
-	printText (color);
-	printText ("\n");
+void printError (char *line) {
+	printText("\x1B[31m");
+	printText(line);
+	printText(color);
+	printText("\n");
 }
 
 /* Starts printing colored text. */
-void startSystemColor ()
-{
+void startSystemColor () {
 	color = "\x1B[36m";
 	refreshTextColor();
 }
 
 /* Starts printing regular text. */
-void startConsoleColor()
-{
+void startConsoleColor () {
 	color = "\x1B[0m";
 	refreshTextColor();
 }
@@ -51,7 +45,7 @@ void getLine (char *buff, size_t sz)
 
 
 	/* If no input */
-	if (fgets (buff, sz, stdin) == NULL)
+	if (fgets(buff, sz, stdin) == NULL)
 	{
 		return;
 	}

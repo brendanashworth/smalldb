@@ -1,5 +1,4 @@
-void parse(char *action)
-{
+void parse (char *action) {
 	
 
 }

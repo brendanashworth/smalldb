@@ -2,19 +2,16 @@
 
 static int running = 1;
 
-void handleIntSignal(int sig)
-{
+void handleIntSignal (int sig) {
 	running = 0;
 }
 
 
-void delegateSignals()
-{
+void delegateSignals () {
 	signal(SIGINT, handleIntSignal);
 }
 
 /* Checks whether or not the program is running. */
-int isRunning()
-{
+int isRunning () {
 	return running;
 }
