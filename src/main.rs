@@ -1,22 +1,25 @@
 use std::io;
 
 mod cli;
+mod command;
 
 fn main() {
-	::cli::printText("Booting smalldb...", ::cli::System);
+	::cli::printLine("Booting smalldb...", ::cli::System);
 
 	// Load
 
-	::cli::printText("Now running smalldb. ^C to quit.", ::cli::System);
+	::cli::printLine("Now running smalldb. ^C to quit.", ::cli::System);
 
 	// Start listening on stdin
 
 	::cli::printText("  Enter command > ", ::cli::Default);
-	for line in io::stdin().lines() {
+	for _ in io::stdin().lines() {
 		// Parse the command
+		// DO SOMETHING
+		::cli::printText("  Enter command > ", ::cli::Default);
 	}
 
 	// Shut down
 
-	::cli::printText("Shutting down...", ::cli::System);
+	::cli::printLine("Shutting down...", ::cli::System);
 }

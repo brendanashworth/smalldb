@@ -5,6 +5,13 @@ pub enum Color {
 	System
 }
 
+pub fn printLine(line: &str, color: Color) {
+	setTextColor(color);
+	logConsole(line);
+	logConsole("\r\n");
+	setTextColor(Default);
+}
+
 pub fn printText(line: &str, color: Color) {
 	setTextColor(color);
 	logConsole(line);
@@ -22,5 +29,5 @@ fn setTextColor(color: Color) {
 
 // Logs a line to the console.
 fn logConsole(line: &str) {
-	println!("{}", line);
+	print!("{}", line);
 }
