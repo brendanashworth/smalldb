@@ -1,4 +1,4 @@
-extern crate collections;
+/*extern crate collections;
 
 use self::collections::hashmap::HashMap;
 
@@ -8,5 +8,5 @@ struct Command {
 }
 
 pub fn ParseCommand(line: ~str) -> Command {
-	let words = line.split(' ').collect();
-}
+	let words = str::split_char(line, ' '); //line.split(' ').collect();
+}*/
