@@ -1,7 +1,10 @@
-all: src/main.c
-	 gcc src/main.c -o main
+all: src/main.rs
+	rustc src/main.rs -o main
+
+internal: src/internal/main.c
+	gcc src/internal/main.c -o main
 
 clean:
 	rm -f main
 
-.PHONY: all clean
+.PHONY: all clean internal
