@@ -1,2 +1,5 @@
 /data
 /main
+
+*.sublime-project
+*.sublime-workspace
