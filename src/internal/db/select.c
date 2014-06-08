@@ -16,16 +16,23 @@ void retrieveTable (char *name) {
 	}
 
 	char key[51];
-	char values[50];
+	char valueSet[50];
 
 	// read file
-	while (fscanf(file, "%s %[^\n]", key, values) == 2) {
-		// make it beautiful
+	while (fscanf(file, "%s %[^\n]", key, valueSet) == 2) {
+		// get us a returnable data object
+		int values[10];
+
+		for (int i = 0; i < strlen(valueSet); i++) {
+			if (valueSet[i] != '&')
+				values[sizeof(values) / sizeof(values[0])] = valueSet[i];
+		}
+
 		char display[56];
 		strcpy(display, "    -> ");
 		strcat(display, key);
 		strcat(display, " :: ");
-		strcat(display, values);
+		strcat(display, valueSet);
 
 		printLine(display);
 	}
