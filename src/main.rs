@@ -13,7 +13,9 @@ fn main() {
 	// Start listening on stdin
 
 	::cli::printText("  Enter command > ", ::cli::Default);
-	for _ in io::stdin().lines() {
+	for line in io::stdin().lines() {
+
+		let _ = ::command::ParseCommand(line.unwrap());
 		// Parse the command
 		// DO SOMETHING
 		::cli::printText("  Enter command > ", ::cli::Default);
