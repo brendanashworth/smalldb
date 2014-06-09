@@ -2,6 +2,7 @@ use std::io;
 
 mod cli;
 mod command;
+mod interface;
 
 fn main() {
 	::cli::printLine("Booting smalldb...", ::cli::System);
