@@ -27,6 +27,7 @@
 
 #1
 all: src/main.rs
+	gcc -dynamiclib src/internal/interface.h -o libinterface.dylib
 	-mkdir bin
 	rustc src/main.rs -o bin/main
 

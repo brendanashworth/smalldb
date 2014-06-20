@@ -1,4 +1,4 @@
-#[link(name = "internal/interface")]
+#[link(name = "interface")]
 extern {
 	fn runCommand();
 }
