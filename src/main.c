@@ -3,37 +3,37 @@
 #include "cli.c"
 #include "signals.c"
 
-#include "db/select.c"
+#include "db/db.c"
 
 int main() {
-	startSystemColor();
-	printLine("Booting smalldb...");
+	cli_color_system();
+	cli_print_line("Booting smalldb...");
 
-	delegateSignals();
+	signals_delegate();
 
-	printLine("Now running smalldb. ^C ^X enter to quit.");
+	cli_print_line("Now running smalldb. ^C ^X enter to quit.");
 
-	startConsoleColor();
-	while (isRunning()) {
+	cli_color_console();
+	while (main_is_running()) {
 		char buff[101];
 
-		printText("  Enter command");
+		cli_print("  Enter command");
 
 		do {
-			printText("> ");
-			getLine(buff, sizeof(buff));
+			cli_print("> ");
+			cli_get_line(buff, sizeof(buff));
 		}
 		while (buff[0] == '\0');
 
-		if (!isRunning()) break;
+		if (!main_is_running()) break;
 
 		// execute
-		retrieveTable("row_one");
+		db_retrieve_table("row_one");
 	}
 
-	startSystemColor();
-	printLine("Shutting down...");
+	cli_color_system();
+	cli_print_line("Shutting down...");
 
-	startConsoleColor();
+	cli_color_console();
 	return 0;
 }

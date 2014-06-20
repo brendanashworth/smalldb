@@ -30,6 +30,7 @@ all: src/main.c
 
 # 2
 test:
+	echo "No tests."
 
 #3
 clean:

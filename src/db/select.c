@@ -1,7 +1,6 @@
-#include <stdio.h>
-#include <string.h>
+// select.c
 
-void retrieveTable (char *name) {
+void db_lib_retrieve_table (char *name) {
 	char base[26];
 	strcpy(base, "./data/");
 	strcat(base, name);
@@ -12,7 +11,7 @@ void retrieveTable (char *name) {
 
 	// if there was an error reading
 	if (file == NULL) {
-		printError ("Error: could not read ./data/row_one/name.t");
+		cli_print_error("Error: could not read ./data/row_one/name.t");
 		return;
 	}
 
@@ -35,7 +34,7 @@ void retrieveTable (char *name) {
 		strcat(display, " :: ");
 		strcat(display, valueSet);
 
-		printLine(display);
+		cli_print_line(display);
 	}
 
 	fclose(file);

@@ -3,43 +3,43 @@
 static char *color = "\x1B[0m";
 
 /* Prints a line to the console. This includes a new line character. */
-void printLine (char *line) {
+void cli_print_line (char *line) {
 	printf("%s", line);
 	printf("\n");
 }
 
 /* Prints text to the console. No new line character. */
-void printText (char *line) {
+void cli_print (char *line) {
 	printf("%s", line);
 }
 
 /* Refreshes the color for the terminal. */
-void refreshTextColor () {
-	printText(color);
+void cli_color_refresh () {
+	cli_print(color);
 }
 
 /* Prints an error to the console. */
-void printError (char *line) {
-	printText("\x1B[31m");
-	printText(line);
-	printText(color);
-	printText("\n");
+void cli_print_error (char *line) {
+	cli_print("\x1B[31m");
+	cli_print(line);
+	cli_print(color);
+	cli_print("\n");
 }
 
 /* Starts printing colored text. */
-void startSystemColor () {
+void cli_color_system () {
 	color = "\x1B[36m";
-	refreshTextColor();
+	cli_color_refresh();
 }
 
 /* Starts printing regular text. */
-void startConsoleColor () {
+void cli_color_console () {
 	color = "\x1B[0m";
-	refreshTextColor();
+	cli_color_refresh();
 }
 
 /* Reads in a line from the command line. */
-void getLine (char *buff, size_t sz)
+void cli_get_line (char *buff, size_t sz)
 {
 	int ch, extra;
 
