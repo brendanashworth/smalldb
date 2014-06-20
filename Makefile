@@ -10,9 +10,7 @@
 #
 # `make` or `make all`
 #
-# Compiling the entire program is a little bit of a hassle, since the backend database is
-# 	written in C and the frontend + network is written in Rust. Due to this, we must
-#	interface the C code so that it can be called from Rust.
+# Compiles the program.
 #
 # 2) Compiling and running tests
 #
@@ -26,14 +24,9 @@
 # This just removes the 'bin' folder, which contains all the executables.
 
 #1
-all: src/main.rs
-	gcc -dynamiclib src/internal/interface.h -o libinterface.dylib
+all: src/main.c
 	-mkdir bin
-	rustc src/main.rs -o bin/main
-
-internal: src/internal/main.c
-	-mkdir bin
-	gcc src/internal/main.c -o bin/main
+	gcc src/main.c -o bin/main
 
 # 2
 test:
@@ -42,4 +35,4 @@ test:
 clean:
 	rm -rf bin
 
-.PHONY: all clean internal
+.PHONY: all clean
