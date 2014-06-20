@@ -1,5 +1,3 @@
-// select.c
-
 void db_lib_retrieve_table (char *name) {
 	char base[26];
 	strcpy(base, "./data/");

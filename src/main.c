@@ -5,6 +5,10 @@
 
 #include "db/db.c"
 
+// Init.
+// We need booleans.
+typedef enum { false, true } bool;
+
 int main() {
 	cli_color_system();
 	cli_print_line("Booting smalldb...");
@@ -28,7 +32,8 @@ int main() {
 		if (!main_is_running()) break;
 
 		// execute
-		db_retrieve_table("row_one");
+		db_run(buff);
+		//db_retrieve_table("row_one");
 	}
 
 	cli_color_system();
