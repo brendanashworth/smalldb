@@ -5,6 +5,9 @@
 
 #include "db/db.c"
 
+// Libraries
+#include "../lib/json/json.h"
+
 // Init.
 // We need booleans.
 typedef enum { false, true } bool;

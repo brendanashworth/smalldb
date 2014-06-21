@@ -9,7 +9,7 @@ void db_lib_retrieve_table (char *name) {
 
 	// if there was an error reading
 	if (file == NULL) {
-		cli_print_error("Error: could not read ./data/row_one/name.t");
+		cli_print_error("Error: could not read table file");
 		return;
 	}
 
