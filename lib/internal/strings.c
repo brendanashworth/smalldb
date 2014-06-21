@@ -1,4 +1,5 @@
 // A string library
+#import <stdlib.h>
 
 // Counts the occurrences of a delimiter inside a string.
 int str_count(char *string, char *delim) {
@@ -19,7 +20,7 @@ char *str_split(char *string, char *delim) {
 	int size = str_count(string, delim);
 	char *saveptr;
 	char *token;
-	char split[size];
+	char *split = malloc(size);
 
 	for (count = 0; count < size; count++) {
 		// if 0, provide string, if not, don't provide string
@@ -28,7 +29,12 @@ char *str_split(char *string, char *delim) {
 		else
 			token = strtok_r(NULL, delim, &saveptr);
 
-		split[count] = token;
+		split[count] = *token;
+	}
+
+	int i;
+	for (i = 0; i < ( sizeof(split) / sizeof(split[0] )); i++) {
+		printf("%d ", split[i]);
 	}
 
 	return split;

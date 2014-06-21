@@ -23,7 +23,7 @@ void db_lib_retrieve_table (char *name) {
 
 		for (int i = 0; i < strlen(valueSet); i++) {
 			if (valueSet[i] != '&')
-				values[sizeof(values) / sizeof(values[0])] = valueSet[i];
+				values[ (sizeof(values) / sizeof(values[0])) - 1 ] = valueSet[i];
 		}
 
 		char display[56];

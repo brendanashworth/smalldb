@@ -14,17 +14,17 @@ void parser_parse(char *command) {
 	char *split = str_split(command, " ");
 	char action = split[0];
 
-	if (strncmp(&action, "PUT", 3) == 0) {
+	if (strcmp(&action, "PUT") == 0) {
 		cli_print_line("Used PUT.");
-	} else if (strncmp(&action, "DROP", 4) == 0) {
+	} else if (strcmp(&action, "DROP") == 0) {
 		cli_print_line("Used DROP.");
-	} else if (strncmp(&action, "MODIFY", 6) == 0) {
+	} else if (strcmp(&action, "MODIFY") == 0) {
 		cli_print_line("Used MODIFY.");
-	} else if (strncmp(&action, "GET", 3) == 0) {
+	} else if (strcmp(&action, "GET") == 0) {
 		cli_print_line("Used GET.");
 	} else {
 		cli_print_error("That command is not recognized.");
 	}
 
-	cli_print_line(command);
+	cli_print_line(&action);
 }
