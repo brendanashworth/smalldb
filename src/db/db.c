@@ -6,7 +6,7 @@ void db_retrieve_table(char *name) {
 }
 
 void db_run(char *command) {
-	parser_parse(command);
+	db_command cmd = parser_parse(command);
 
 	db_retrieve_table("row_one");
 }

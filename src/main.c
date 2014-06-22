@@ -1,12 +1,15 @@
 #include <string.h>
 
+// Libraries
+#ifndef LIB_JSON
+#define LIB_JSON
+#include "../deps/json/json.h"
+#endif
+
 #include "cli.c"
 #include "signals.c"
 
 #include "db/db.c"
-
-// Libraries
-#include "../lib/json/json.h"
 
 int main() {
 	cli_color_system();
