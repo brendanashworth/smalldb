@@ -8,10 +8,6 @@
 // Libraries
 #include "../lib/json/json.h"
 
-// Init.
-// We need booleans.
-typedef enum { false, true } bool;
-
 int main() {
 	cli_color_system();
 	cli_print_line("Booting smalldb...");

@@ -2,17 +2,17 @@
 #include "command.c"
 #include "../../../lib/internal/strings.c"
 
-char *keywords[][4] = {"PUT", "DROP", "MODIFY", "GET"};
+const char *keywords[][4] = {"PUT", "DROP", "MODIFY", "GET"};
 // This is how commands work:
 // put: PUT { our json encoded data }
 // drop: DROP { json encoded data, of which the data matches }
 // modify: MODIFY { json match } { modified data }
 // get: GET { json match }
 
-void parser_parse(char *command) {
+void parser_parse(const char *command) {
 	// Get the action
-	char *split = str_split(command, " ");
-	char action = split[0];
+	char **split = str_split(command, " ");
+	char action = *split[0];
 
 	printf("LA LA %s LA LA\n", &action);
 

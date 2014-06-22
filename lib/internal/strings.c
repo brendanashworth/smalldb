@@ -15,12 +15,12 @@ int str_count(char *string, char *delim) {
 }
 
 // Splits a string by a delimiter and returns the string.
-char *str_split(char *string, char delim) {
+char **str_split(char *string, char *delim) {
 	int count;
-	int size = str_count(string, delim);
+	uint8_t size = str_count(string, delim);
 	char *saveptr;
 	char *token;
-	char *split = malloc(size);
+	char **split = malloc(size * sizeof(char*));
 
 	for (count = 0; count < size; count++) {
 		// if 0, provide string, if not, don't provide string

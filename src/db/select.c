@@ -1,4 +1,4 @@
-void db_lib_retrieve_table (char *name) {
+void db_lib_retrieve_table (const char *name) {
 	char base[26];
 	strcpy(base, "./data/");
 	strcat(base, name);
