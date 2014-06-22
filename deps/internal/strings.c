@@ -16,7 +16,7 @@ int str_count(char *string, char *delim) {
 
 // Splits a string by a delimiter and returns the string.
 char **str_split(char *string, char *delim) {
-    uint8_t size = str_count(string), i;
+    uint8_t size = str_count(string, "") + 1, i;
     char** split = malloc(size * sizeof(char*) );
 
     for (i = 0; i < size; i++) {
