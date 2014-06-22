@@ -16,22 +16,15 @@ int str_count(char *string, char *delim) {
 
 // Splits a string by a delimiter and returns the string.
 char **str_split(char *string, char *delim) {
-	int count;
-	uint8_t size = str_count(string, delim);
-	char *saveptr;
-	char *token;
-	char **split = malloc(size * sizeof(char*));
+    uint8_t size = 2, i;
+    char** split = malloc(size * sizeof(char*) );
 
-	for (count = 0; count < size; count++) {
-		// if 0, provide string, if not, don't provide string
-		if (count == 0)
-			token = strtok_r(string, delim, &saveptr);
-		else
-			token = strtok_r(NULL, delim, &saveptr);
+    for (i = 0; i < size; i++) {
+        if (i == 0)
+            split[i] = strtok(string, delim);
+        else
+            split[i] = strtok(NULL, delim);
+    }
 
-		printf("Assigned %s to %i.\n", token, count);
-		split[count] = token;
-	}
-
-	return split;
+    return split;
 }
