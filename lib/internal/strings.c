@@ -15,7 +15,7 @@ int str_count(char *string, char *delim) {
 }
 
 // Splits a string by a delimiter and returns the string.
-char *str_split(char *string, char *delim) {
+char *str_split(char *string, char delim) {
 	int count;
 	int size = str_count(string, delim);
 	char *saveptr;
@@ -29,12 +29,8 @@ char *str_split(char *string, char *delim) {
 		else
 			token = strtok_r(NULL, delim, &saveptr);
 
-		split[count] = *token;
-	}
-
-	int i;
-	for (i = 0; i < ( sizeof(split) / sizeof(split[0] )); i++) {
-		printf("%d ", split[i]);
+		printf("Assigned %s to %i.\n", token, count);
+		split[count] = token;
 	}
 
 	return split;

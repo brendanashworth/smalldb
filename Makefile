@@ -23,10 +23,21 @@
 # `make clean`
 # This just removes the 'bin' folder, which contains all the executables.
 
+compiler ?= gcc
+
+# Flags for production, basically optimizes the code.
+production_cflags = -O3
+# Flags for debugging, which compiles a lot more stuff into the executable.
+debugging_cflags = -g
+
 #1
 all: src/main.c
 	-mkdir bin
-	gcc src/main.c -o bin/main
+	$(compiler) $(production_cflags) src/main.c -o bin/main
+
+debugging: src/main.c
+	-mkdir bin
+	$(compiler) $(debugging_cflags) src/main.c -o bin/main
 
 # 2
 test:

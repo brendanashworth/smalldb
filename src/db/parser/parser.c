@@ -14,6 +14,9 @@ void parser_parse(char *command) {
 	char *split = str_split(command, " ");
 	char action = split[0];
 
+	printf("LA LA %s LA LA\n", &action);
+
+
 	if (strcmp(&action, "PUT") == 0) {
 		cli_print_line("Used PUT.");
 	} else if (strcmp(&action, "DROP") == 0) {
@@ -26,5 +29,5 @@ void parser_parse(char *command) {
 		cli_print_error("That command is not recognized.");
 	}
 
-	cli_print_line(&action);
+	//cli_print_line(&action);
 }
