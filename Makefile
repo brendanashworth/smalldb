@@ -47,4 +47,4 @@ test:
 clean:
 	rm -rf bin
 
-.PHONY: all clean
+.PHONY: all clean test debugging

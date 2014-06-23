@@ -1,6 +1,8 @@
 #include <stdio.h>
 
-static char *color = "\x1B[0m";
+void cli_init(database_t *db) {
+	db->logger->color = CLI_SYSTEM;
+}
 
 /* Prints a line to the console. This includes a new line character. */
 void cli_print_line(char *line) {
@@ -13,29 +15,29 @@ void cli_print(char *line) {
 	printf("%s", line);
 }
 
+/* Changes the CLI color */
+void cli_color_change(database_t *db, cli_color color) {
+	db->logger->color = &color;
+
+	if (color == CLI_SYSTEM)
+		cli_print("\x1B[36m");
+	else if (color == CLI_CONSOLE)
+		cli_print("\x1B[0m");
+	else if (color == CLI_ERROR)
+		cli_print("\x1B[31m");
+}
+
 /* Refreshes the color for the terminal. */
-void cli_color_refresh() {
-	cli_print(color);
+void cli_color_refresh(database_t *db) {
+	cli_color_change(db, *db->logger->color);
 }
 
 /* Prints an error to the console. */
-void cli_print_error(char *line) {
+void cli_print_error(database_t *db, char *line) {
 	cli_print("\x1B[31m");
 	cli_print(line);
-	cli_print(color);
+	cli_color_refresh(db);
 	cli_print("\n");
-}
-
-/* Starts printing colored text. */
-void cli_color_system() {
-	color = "\x1B[36m";
-	cli_color_refresh();
-}
-
-/* Starts printing regular text. */
-void cli_color_console() {
-	color = "\x1B[0m";
-	cli_color_refresh();
 }
 
 /* Reads in a line from the command line. */

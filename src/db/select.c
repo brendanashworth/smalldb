@@ -1,4 +1,4 @@
-void db_lib_retrieve_table (const char *name) {
+void db_lib_retrieve_table (database_t *db, const char *name) {
 	char base[26];
 	strcpy(base, "./data/");
 	strcat(base, name);
@@ -9,7 +9,7 @@ void db_lib_retrieve_table (const char *name) {
 
 	// if there was an error reading
 	if (file == NULL) {
-		cli_print_error("Error: could not read table file");
+		cli_print_error(db, "Error: could not read table file");
 		return;
 	}
 

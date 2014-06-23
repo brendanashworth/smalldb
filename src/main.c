@@ -2,24 +2,30 @@
 
 // Libraries
 #ifndef LIB_JSON
-#define LIB_JSON
-#include "../deps/json/json.h"
+	#define LIB_JSON
+	#include "../deps/json/json.h"
+	#include "../deps/json/json.c"
 #endif
 
-#include "cli.c"
-#include "signals.c"
+#include "db/defs.c"
 
+#include "signals.c"
+#include "cli.c"
 #include "db/db.c"
 
 int main() {
-	cli_color_system();
+	database_t *database;
+	database = malloc(sizeof(*database));
+	database->logger = malloc(sizeof(*database->logger));
+	database->logger->color = CLI_SYSTEM;
+
 	cli_print_line("Booting smalldb...");
 
 	signals_delegate();
 
 	cli_print_line("Now running smalldb. ^C ^X enter to quit.");
 
-	cli_color_console();
+	cli_color_change(database, CLI_CONSOLE);
 	while (main_is_running()) {
 		char buff[101];
 
@@ -34,13 +40,13 @@ int main() {
 		if (!main_is_running()) break;
 
 		// execute
-		db_run(buff);
+		db_run(database, buff);
 		//db_retrieve_table("row_one");
 	}
 
-	cli_color_system();
+	cli_color_change(database, CLI_SYSTEM);
 	cli_print_line("Shutting down...");
 
-	cli_color_console();
+	cli_color_change(database, CLI_CONSOLE);
 	return 0;
 }
