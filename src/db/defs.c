@@ -17,13 +17,18 @@ typedef struct database_t {
 
 /* Command specific definitions */
 // Action type struct
-enum db_command_action { PUT, DROP, MODIFY, GET };
+typedef enum db_command_action {
+	PUT,
+	DROP,
+	MODIFY,
+	GET
+} db_command_action;
 
 // Command struct
 typedef struct db_command {
 	// If an error occurs, might as well pass it down.
 	char *error;
-	enum db_command_action *action;
+	db_command_action *action;
 	json_value *args;
 } db_command;
 
