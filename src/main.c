@@ -48,5 +48,9 @@ int main() {
 	cli_print_line("Shutting down...");
 
 	cli_color_change(database, CLI_CONSOLE);
+
+	free(database->logger);
+	free(database);
+
 	return 0;
 }
