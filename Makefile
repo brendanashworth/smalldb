@@ -25,6 +25,8 @@
 
 compiler ?= gcc
 
+# Generic flags
+cflags = -std=c99 -lm
 # Flags for production, basically optimizes the code.
 production_cflags = -O3
 # Flags for debugging, which compiles a lot more stuff into the executable.
@@ -33,11 +35,11 @@ debugging_cflags = -g
 #1
 all: src/main.c
 	-mkdir bin
-	$(compiler) $(production_cflags) src/main.c -o bin/main
+	$(compiler) src/main.c $(cflags) $(production_cflags) -o bin/main
 
 debugging: src/main.c
 	-mkdir bin
-	$(compiler) $(debugging_cflags) src/main.c -o bin/main
+	$(compiler) src/main.c $(cflags) $(debugging_cflags) -o bin/main
 
 # 2
 test:
